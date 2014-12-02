@@ -13,7 +13,7 @@ from credenciales import usuario, passwd
 from base64 import b64decode
 
 # Para correr sin interfaz grafica
-display = Display(visible=0, size=(800, 600))
+display = Display(visible=1, size=(800, 600))
 display.start()
 
 driver = webdriver.Chrome()
