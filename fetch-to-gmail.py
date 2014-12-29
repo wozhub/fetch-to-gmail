@@ -1,5 +1,9 @@
 #!/usr/bin/python
 
+# Modo debug mediante environment variable
+from os import getenv
+
+
 # Para ocultar la ventana del navegador
 from pyvirtualdisplay import Display
 
@@ -13,7 +17,8 @@ from credenciales import usuario, passwd
 from base64 import b64decode
 
 # Para correr sin interfaz grafica
-display = Display(visible=1, size=(800, 600))
+visible = getenv('VISIBLE') or 0
+display = Display(visible=visible, size=(800, 600))
 display.start()
 
 driver = webdriver.Chrome()
@@ -40,7 +45,8 @@ while True:
         elem.click()
         sleep(1)
         a = a + 1
-        print "%d/%d" % (a, tope)
+	if visible:
+	    print "%d/%d" % (a, tope)
     except:
         pass
 
