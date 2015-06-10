@@ -25,9 +25,12 @@ driver = webdriver.Chrome()
 driver.get("http://gmail.com")
 
 driver.find_element_by_name("Email").send_keys(usuario)
+driver.find_element_by_id("next").click()
+sleep(1)
+
 elem = driver.find_element_by_name("Passwd")
 elem.send_keys(b64decode(passwd))
-elem.send_keys(Keys.RETURN)
+driver.find_element_by_id("signIn").click()
 
 driver.get('https://mail.google.com/mail/u/0/#settings/accounts')
 
